@@ -1,0 +1,64 @@
+<h3 align="center">Daftar Pegawai</h3>
+<table align="center" cellpadding="10">
+    <thead cellpadding="">
+        <tr bgcolor="tomato">
+            <th>NO</th>
+            <th>NAMA</th>
+            <th>JABATAN</th>
+            <th>AGAMA</th>
+            <th>GAJI POKOK</th>
+            <th>TUNJANGAN JABATAN</th>
+            <th>TUNJANGAN KESEHATAN</th>
+            <th>GAJI KOTOR</th>
+            <th>ZAKAT PROFESI</th>
+            <th>TAKE HOME PAY</th>
+        </tr>
+    </thead>
+    <tbody>
+        <script>
+            var no, warna, jabatan, agama, gapok, tunjab, tunkes;
+            
+            for(no=1; no <= 100; no++){
+
+                if(no <= 25) jabatan = "Manager"
+                else if(no > 25 && no <= 50) jabatan = "Asisten Manager"
+                else if(no > 50 && no <= 75) jabatan = "Supervisor"
+                else jabatan = "Staff"
+                switch(jabatan){
+                    case jabatan = "Manager":
+                        gapok = 15000000;
+                        break;
+                    case jabatan = "Asisten Manager":
+                        gapok = 10000000;
+                        break;
+                    case jabatan = "Supervisor":
+                        gapok = 7000000;
+                        break;
+                    case jabatan = "Staff":
+                        gapok = 4000000;
+                        break;
+                }
+              
+                tunjab = gapok * 0.2;
+                tunkes = gapok * 0.1;
+                gaji_kotor = gapok + tunjab + tunkes;
+                warna = (no % 2 == 1) ? 'yellow' : 'aqua';
+
+                zakat_profesi = (no % 2 == 1 && gaji_kotor >= 7000000) ? gaji_kotor * 0.25 : 0;
+                
+                document.write(`<tr bgcolor="${warna}">
+                    <td>${no}</td>
+                    <td>Pegawai${no}</td>
+                    <td>${jabatan}</td>
+                    <td>${(no % 2 == 1) ? 'Muslim' : 'Non Muslim'}</td>
+                    <td>Rp ${gapok}</td>
+                    <td>Rp ${tunjab}</td>
+                    <td>Rp ${tunkes}</td>
+                    <td>Rp ${gaji_kotor}</td>
+                    <td>Rp ${zakat_profesi}</td>
+                    <td>Rp ${gaji_kotor - zakat_profesi}</td>
+                </tr>`);
+            }
+        </script>
+    </tbody>
+</table>

@@ -1,0 +1,63 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Gempa</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h3></h3>
+        <table class="table table-striped" align="center">
+            <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Lokasi</th>
+                  <th scope="col">Skala</th>
+                  <th scope="col">Dampak</th>
+                </tr>
+              </thead>
+              <tbody id="tabel_info">
+                <script>
+                    class Gempa{
+                        constructor(no, lokasi, skala){
+                            this.no =  no; //Untuk kolom no
+                            this.lokasi = lokasi;
+                            this.skala = skala;
+                        }
+                        dampak(skala){
+                            if(this.skala <= 2) return "tidak terasa";
+                            else if(this.skala > 2 && this.skala <= 4) return "bangunan retak retak";
+                            else if(this.skala > 4 && this.skala <= 6) return "bangunan roboh";
+                            else return "bangunan roboh dan berpotensi tsunami";
+                        }
+                        infoGempa(){
+                            document.write(`<tr>
+                                <td>${this.no}</td>
+                                <td>${this.lokasi}</td>
+                                <td>${this.skala}</td>
+                                <td>${this.dampak()}</td>
+                            </tr>`);
+                        }
+                    }
+                    g1 = new Gempa(1, 'Bandung', 1);
+                    g2 = new Gempa(2, 'Jakarta', 3);
+                    g3 = new Gempa(3, 'Lampung', 5);
+                    g4 = new Gempa(4, 'Aceh', 8);
+                    g5 = new Gempa(5, 'Jogja', 4);
+                    g6 = new Gempa(6, 'Bengkulu', 6);
+                    g7 = new Gempa(7, 'Bali', 7);
+                    g8 = new Gempa(8, 'Kalimantan Timur', 2);
+                    g9 = new Gempa(9, 'Sumatera Barat', 5);
+                    g10 = new Gempa(10, 'Jawa Timur', 2);
+                    
+                    g1.infoGempa(); g2.infoGempa(); g3.infoGempa(); g4.infoGempa(); g5.infoGempa(); 
+                    g6.infoGempa(); g7.infoGempa(); g8.infoGempa(); g9.infoGempa(); g10.infoGempa();
+                 </script>
+              </tbody>
+          </table>
+    </div>
+</body>
+</html>
